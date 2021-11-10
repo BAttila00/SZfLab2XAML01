@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using SZfLab2XAML01.Models;
+using SZfLab2XAML01.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -49,5 +50,8 @@ namespace SZfLab2XAML01 {
             }
         };
 
+        private void AddButton_Click(object sender, RoutedEventArgs e) {
+            Frame.Navigate(typeof(TodoDetailsPage), null);      //null, ez itt az új poldalnak átadott paraméterek listája, most null
+        }
     }
 }

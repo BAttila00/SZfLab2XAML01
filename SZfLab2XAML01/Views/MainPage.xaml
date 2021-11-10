@@ -14,7 +14,18 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{Binding Todos}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Grid.Row="0" DefaultLabelPosition="Right" VerticalContentAlignment="Center">
+            <AppBarButton x:Name="AddButton" Icon="Add" Label="Hozzáadás" Click="AddButton_Click"/>
+            <CommandBar.Content>
+                <TextBlock Text="Teendők" Style="{ThemeResource TitleTextBlockStyle}" Margin="12,0,0,0"/>
+            </CommandBar.Content>
+        </CommandBar>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Todos}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
