@@ -6,14 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:c="using:SZfLab2XAML01.Converters">
+
+    <Page.Resources>
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView ItemsSource="{Binding Todos}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                        <Grid>
+                            <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                            <SymbolIcon HorizontalAlignment="Right" Symbol="Accept" Visibility="{Binding IsDone, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        </Grid>
                         <TextBlock Text="{Binding Deadline}"/>
                     </StackPanel>
                 </DataTemplate>
