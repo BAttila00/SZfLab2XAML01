@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using SZfLab2XAML01.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,16 +16,38 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace SZfLab2XAML01
-{
+namespace SZfLab2XAML01 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
+    public sealed partial class MainPage : Page {
+        public MainPage() {
             this.InitializeComponent();
+
+            DataContext = this;
         }
+
+        public List<TodoItem> Todos { get; set; } = new List<TodoItem>()
+        {
+            new TodoItem()
+            {
+                Id = 1,
+                Title = "Tejet venni",
+                Description = "Ha van tojás, hozz tizet!",
+                Priority = Priority.Normal,
+                IsDone = true,
+                Deadline = DateTimeOffset.Now + TimeSpan.FromDays(1)
+            },
+            new TodoItem()
+            {
+                Id = 2,
+                Title = "Megírni a szakdolgozatot",
+                Description = "Minimum 40 oldal, szépen kitöltve screenshotokkal",
+                Priority = Priority.High,
+                IsDone = false,
+                Deadline = new DateTime(2017, 12, 08, 12, 00, 00, 00)
+            }
+        };
+
     }
 }
